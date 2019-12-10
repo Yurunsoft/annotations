@@ -87,8 +87,8 @@ A series of additional improvements have been introduced:
 
  * support for PHP 7 "grouped use statements"
  * support for ignoring entire namespace names
-   via `Doctrine\Common\Annotations\AnnotationReader::addGlobalIgnoredNamespace()` and
-   `Doctrine\Common\Annotations\DocParser::setIgnoredAnnotationNamespaces()`. This will
+   via `Yurun\Doctrine\Common\Annotations\AnnotationReader::addGlobalIgnoredNamespace()` and
+   `Yurun\Doctrine\Common\Annotations\DocParser::setIgnoredAnnotationNamespaces()`. This will
    allow you to ignore annotations from namespaces that you cannot autoload
  * testing all parent classes and interfaces when checking if the annotation cache
    in the `CachedReader` is fresh

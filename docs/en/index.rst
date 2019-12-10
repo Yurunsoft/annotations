@@ -59,9 +59,9 @@ Reading annotations
 
 The access to the annotations happens by reflection of the class
 containing them. There are multiple reader-classes implementing the
-``Doctrine\Common\Annotations\Reader`` interface, that can
+``Yurun\Doctrine\Common\Annotations\Reader`` interface, that can
 access the annotations of a class. A common one is
-``Doctrine\Common\Annotations\AnnotationReader``:
+``Yurun\Doctrine\Common\Annotations\AnnotationReader``:
 
 .. code-block:: php
 

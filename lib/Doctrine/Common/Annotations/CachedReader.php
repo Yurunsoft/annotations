@@ -17,7 +17,7 @@
  * <http://www.doctrine-project.org>.
  */
 
-namespace Doctrine\Common\Annotations;
+namespace Yurun\Doctrine\Common\Annotations;
 
 use Doctrine\Common\Cache\Cache;
 use ReflectionClass;

@@ -18,7 +18,7 @@
  * <http://www.doctrine-project.org>.
  */
 
-namespace Doctrine\Common\Annotations\Annotation;
+namespace Yurun\Doctrine\Common\Annotations\Annotation;
 
 /**
  * Annotation that can be used to signal to the parser
@@ -31,7 +31,7 @@ namespace Doctrine\Common\Annotations\Annotation;
 final class Attributes
 {
     /**
-     * @var array<Doctrine\Common\Annotations\Annotation\Attribute>
+     * @var array<Yurun\Doctrine\Common\Annotations\Annotation\Attribute>
      */
     public $value;
 }

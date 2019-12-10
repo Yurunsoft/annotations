@@ -2,7 +2,7 @@
 
 namespace Doctrine\Tests\Common\Annotations;
 
-use Doctrine\Common\Annotations\SimpleAnnotationReader;
+use Yurun\Doctrine\Common\Annotations\SimpleAnnotationReader;
 
 class SimpleAnnotationReaderTest extends AbstractReaderTest
 {

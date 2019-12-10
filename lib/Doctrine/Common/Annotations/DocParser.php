@@ -17,13 +17,13 @@
  * <http://www.doctrine-project.org>.
  */
 
-namespace Doctrine\Common\Annotations;
+namespace Yurun\Doctrine\Common\Annotations;
 
-use Doctrine\Common\Annotations\Annotation\Attribute;
+use Yurun\Doctrine\Common\Annotations\Annotation\Attribute;
 use ReflectionClass;
-use Doctrine\Common\Annotations\Annotation\Enum;
-use Doctrine\Common\Annotations\Annotation\Target;
-use Doctrine\Common\Annotations\Annotation\Attributes;
+use Yurun\Doctrine\Common\Annotations\Annotation\Enum;
+use Yurun\Doctrine\Common\Annotations\Annotation\Target;
+use Yurun\Doctrine\Common\Annotations\Annotation\Attributes;
 
 /**
  * A parser for docblock annotations.
@@ -54,7 +54,7 @@ final class DocParser
     /**
      * The lexer.
      *
-     * @var \Doctrine\Common\Annotations\DocLexer
+     * @var \Yurun\Doctrine\Common\Annotations\DocLexer
      */
     private $lexer;
 
@@ -68,7 +68,7 @@ final class DocParser
     /**
      * Doc parser used to collect annotation target.
      *
-     * @var \Doctrine\Common\Annotations\DocParser
+     * @var \Yurun\Doctrine\Common\Annotations\DocParser
      */
     private static $metadataParser;
 
@@ -138,7 +138,7 @@ final class DocParser
      * @var array
      */
     private static $annotationMetadata = [
-        'Doctrine\Common\Annotations\Annotation\Target' => [
+        'Yurun\Doctrine\Common\Annotations\Annotation\Target' => [
             'is_annotation'    => true,
             'has_constructor'  => true,
             'properties'       => [],
@@ -154,7 +154,7 @@ final class DocParser
                 ]
              ],
         ],
-        'Doctrine\Common\Annotations\Annotation\Attribute' => [
+        'Yurun\Doctrine\Common\Annotations\Annotation\Attribute' => [
             'is_annotation'    => true,
             'has_constructor'  => false,
             'targets_literal'  => 'ANNOTATION_ANNOTATION',
@@ -183,7 +183,7 @@ final class DocParser
                 ]
              ],
         ],
-        'Doctrine\Common\Annotations\Annotation\Attributes' => [
+        'Yurun\Doctrine\Common\Annotations\Annotation\Attributes' => [
             'is_annotation'    => true,
             'has_constructor'  => false,
             'targets_literal'  => 'ANNOTATION_CLASS',
@@ -196,12 +196,12 @@ final class DocParser
                 'value' => [
                     'type'      =>'array',
                     'required'  =>true,
-                    'array_type'=>'Doctrine\Common\Annotations\Annotation\Attribute',
-                    'value'     =>'array<Doctrine\Common\Annotations\Annotation\Attribute>'
+                    'array_type'=>'Yurun\Doctrine\Common\Annotations\Annotation\Attribute',
+                    'value'     =>'array<Yurun\Doctrine\Common\Annotations\Annotation\Attribute>'
                 ]
              ],
         ],
-        'Doctrine\Common\Annotations\Annotation\Enum' => [
+        'Yurun\Doctrine\Common\Annotations\Annotation\Enum' => [
             'is_annotation'    => true,
             'has_constructor'  => true,
             'targets_literal'  => 'ANNOTATION_PROPERTY',
@@ -484,10 +484,10 @@ final class DocParser
             self::$metadataParser->setIgnoreNotImportedAnnotations(true);
             self::$metadataParser->setIgnoredAnnotationNames($this->ignoredAnnotationNames);
             self::$metadataParser->setImports([
-                'enum'          => 'Doctrine\Common\Annotations\Annotation\Enum',
-                'target'        => 'Doctrine\Common\Annotations\Annotation\Target',
-                'attribute'     => 'Doctrine\Common\Annotations\Annotation\Attribute',
-                'attributes'    => 'Doctrine\Common\Annotations\Annotation\Attributes'
+                'enum'          => 'Yurun\Doctrine\Common\Annotations\Annotation\Enum',
+                'target'        => 'Yurun\Doctrine\Common\Annotations\Annotation\Target',
+                'attribute'     => 'Yurun\Doctrine\Common\Annotations\Annotation\Attribute',
+                'attributes'    => 'Yurun\Doctrine\Common\Annotations\Annotation\Attributes'
             ]);
 
             AnnotationRegistry::registerFile(__DIR__ . '/Annotation/Enum.php');

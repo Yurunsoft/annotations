@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Doctrine\Performance\Common\Annotations;
 
-use Doctrine\Common\Annotations\AnnotationReader;
-use Doctrine\Common\Annotations\CachedReader;
+use Yurun\Doctrine\Common\Annotations\AnnotationReader;
+use Yurun\Doctrine\Common\Annotations\CachedReader;
 use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\Tests\Common\Annotations\Fixtures\Controller;
 use ReflectionMethod;

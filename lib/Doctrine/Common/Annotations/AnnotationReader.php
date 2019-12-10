@@ -17,10 +17,10 @@
  * <http://www.doctrine-project.org>.
  */
 
-namespace Doctrine\Common\Annotations;
+namespace Yurun\Doctrine\Common\Annotations;
 
-use Doctrine\Common\Annotations\Annotation\IgnoreAnnotation;
-use Doctrine\Common\Annotations\Annotation\Target;
+use Yurun\Doctrine\Common\Annotations\Annotation\IgnoreAnnotation;
+use Yurun\Doctrine\Common\Annotations\Annotation\Target;
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionProperty;
@@ -42,7 +42,7 @@ class AnnotationReader implements Reader
      * @var array
      */
     private static $globalImports = [
-        'ignoreannotation' => 'Doctrine\Common\Annotations\Annotation\IgnoreAnnotation',
+        'ignoreannotation' => 'Yurun\Doctrine\Common\Annotations\Annotation\IgnoreAnnotation',
     ];
 
     /**
@@ -136,21 +136,21 @@ class AnnotationReader implements Reader
     /**
      * Annotations parser.
      *
-     * @var \Doctrine\Common\Annotations\DocParser
+     * @var \Yurun\Doctrine\Common\Annotations\DocParser
      */
     private $parser;
 
     /**
      * Annotations parser used to collect parsing metadata.
      *
-     * @var \Doctrine\Common\Annotations\DocParser
+     * @var \Yurun\Doctrine\Common\Annotations\DocParser
      */
     private $preParser;
 
     /**
      * PHP parser used to collect imports.
      *
-     * @var \Doctrine\Common\Annotations\PhpParser
+     * @var \Yurun\Doctrine\Common\Annotations\PhpParser
      */
     private $phpParser;
 

@@ -19,13 +19,13 @@
 
 namespace Doctrine\Tests\Common\Annotations\Annotation;
 
-use Doctrine\Common\Annotations\Annotation\Target;
+use Yurun\Doctrine\Common\Annotations\Annotation\Target;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Tests for {@see \Doctrine\Common\Annotations\Annotation\Target}
+ * Tests for {@see \Yurun\Doctrine\Common\Annotations\Annotation\Target}
  *
- * @covers \Doctrine\Common\Annotations\Annotation\Target
+ * @covers \Yurun\Doctrine\Common\Annotations\Annotation\Target
  */
 class TargetTest extends TestCase
 {

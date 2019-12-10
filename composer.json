@@ -25,7 +25,7 @@
         "sort-packages": true
     },
     "autoload": {
-        "psr-4": { "Doctrine\\Common\\Annotations\\": "lib/Doctrine/Common/Annotations" }
+        "psr-4": { "Yurun\\Doctrine\\Common\\Annotations\\": "lib/Doctrine/Common/Annotations" }
     },
     "autoload-dev": {
         "psr-4": {

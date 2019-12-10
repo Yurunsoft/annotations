@@ -2,7 +2,7 @@
 
 namespace Doctrine\Tests\Common\Annotations;
 
-use Doctrine\Common\Annotations\Annotation;
+use Yurun\Doctrine\Common\Annotations\Annotation;
 use PHPUnit\Framework\TestCase;
 
 final class AnnotationTest extends TestCase

@@ -17,7 +17,7 @@
  * <http://www.doctrine-project.org>.
  */
 
-namespace Doctrine\Common\Annotations;
+namespace Yurun\Doctrine\Common\Annotations;
 
 /**
  * File cache reader for annotations.
@@ -27,7 +27,7 @@ namespace Doctrine\Common\Annotations;
  *
  * @deprecated the FileCacheReader is deprecated and will be removed
  *             in version 2.0.0 of doctrine/annotations. Please use the
- *             {@see \Doctrine\Common\Annotations\CachedReader} instead.
+ *             {@see \Yurun\Doctrine\Common\Annotations\CachedReader} instead.
  */
 class FileCacheReader implements Reader
 {

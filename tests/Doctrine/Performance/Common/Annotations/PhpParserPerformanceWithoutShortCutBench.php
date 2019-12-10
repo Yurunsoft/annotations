@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Doctrine\Performance\Common\Annotations;
 
-use Doctrine\Common\Annotations\PhpParser;
+use Yurun\Doctrine\Common\Annotations\PhpParser;
 use ReflectionClass;
 use SingleClassLOC1000;
 

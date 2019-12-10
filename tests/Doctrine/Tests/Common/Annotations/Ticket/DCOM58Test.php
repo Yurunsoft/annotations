@@ -1,9 +1,9 @@
 <?php
 namespace Doctrine\Tests\Common\Annotations\Ticket;
 
-use Doctrine\Common\Annotations\AnnotationReader;
-use Doctrine\Common\Annotations\DocParser;
-use Doctrine\Common\Annotations\SimpleAnnotationReader;
+use Yurun\Doctrine\Common\Annotations\AnnotationReader;
+use Yurun\Doctrine\Common\Annotations\DocParser;
+use Yurun\Doctrine\Common\Annotations\SimpleAnnotationReader;
 use PHPUnit\Framework\TestCase;
 
 //Some class named Entity in the global namespace

@@ -4,8 +4,8 @@ namespace Doctrine\Tests\Common\Annotations;
 
 use Doctrine\Common\Cache\Cache;
 use Doctrine\Tests\Common\Annotations\Fixtures\Annotation\Route;
-use Doctrine\Common\Annotations\AnnotationReader;
-use Doctrine\Common\Annotations\CachedReader;
+use Yurun\Doctrine\Common\Annotations\AnnotationReader;
+use Yurun\Doctrine\Common\Annotations\CachedReader;
 use Doctrine\Common\Cache\ArrayCache;
 
 class CachedReaderTest extends AbstractReaderTest

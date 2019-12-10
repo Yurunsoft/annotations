@@ -17,7 +17,7 @@
  * <http://www.doctrine-project.org>.
  */
 
-namespace Doctrine\Common\Annotations;
+namespace Yurun\Doctrine\Common\Annotations;
 
 /**
  * Description of AnnotationException
