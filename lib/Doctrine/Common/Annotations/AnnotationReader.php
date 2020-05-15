@@ -121,6 +121,18 @@ class AnnotationReader implements Reader
     private static $globalIgnoredNamespaces = [];
 
     /**
+     * 增加全局导入
+     *
+     * @param string $name
+     * @param string $class
+     * @return void
+     */
+    static public function addGlobalImports($name, $class)
+    {
+        static::$globalImports[$name] = $class;
+    }
+
+    /**
      * Add a new annotation to the globally ignored annotation names with regard to exception handling.
      *
      * @param string $name
