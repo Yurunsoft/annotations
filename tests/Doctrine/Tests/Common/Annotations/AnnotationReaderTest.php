@@ -7,9 +7,14 @@ use Yurun\Doctrine\Common\Annotations\AnnotationReader;
 use Yurun\Doctrine\Common\Annotations\DocParser;
 use Doctrine\Tests\Common\Annotations\Fixtures\Annotation\SingleUseAnnotation;
 use Doctrine\Tests\Common\Annotations\Fixtures\ClassWithFullPathUseStatement;
+use Doctrine\Tests\Common\Annotations\Fixtures\ClassWithImportedIgnoredAnnotation;
+use Doctrine\Tests\Common\Annotations\Fixtures\ClassWithPHPCodeSnifferAnnotation;
+use Doctrine\Tests\Common\Annotations\Fixtures\ClassWithPhpCsSuppressAnnotation;
+use Doctrine\Tests\Common\Annotations\Fixtures\ClassWithPHPStanGenericsAnnotations;
 use Doctrine\Tests\Common\Annotations\Fixtures\IgnoredNamespaces\AnnotatedAtClassLevel;
 use Doctrine\Tests\Common\Annotations\Fixtures\IgnoredNamespaces\AnnotatedAtMethodLevel;
 use Doctrine\Tests\Common\Annotations\Fixtures\IgnoredNamespaces\AnnotatedAtPropertyLevel;
+use Doctrine\Tests\Common\Annotations\Fixtures\IgnoredNamespaces\AnnotatedWithAlias;
 
 class AnnotationReaderTest extends AbstractReaderTest
 {
@@ -112,6 +117,21 @@ class AnnotationReaderTest extends AbstractReaderTest
         self::assertEmpty($reader->getPropertyAnnotations($ref->getProperty('property')));
     }
 
+    /**
+     * @group 244
+     *
+     * @runInSeparateProcess
+     */
+    public function testAnnotationWithAliasIsIgnored(): void
+    {
+        $reader = $this->getReader();
+        $ref = new \ReflectionClass(AnnotatedWithAlias::class);
+
+        $reader::addGlobalIgnoredNamespace('SomePropertyAnnotationNamespace');
+
+        self::assertEmpty($reader->getPropertyAnnotations($ref->getProperty('property')));
+    }
+
     public function testClassWithFullPathUseStatement()
     {
         if (class_exists(SingleUseAnnotation::class, false)) {
@@ -128,5 +148,61 @@ class AnnotationReaderTest extends AbstractReaderTest
         $annotations = $reader->getClassAnnotations($ref);
 
         self::assertInstanceOf(SingleUseAnnotation::class,$annotations[0]);
+    }
+
+    public function testPhpCsSuppressAnnotationIsIgnored()
+    {
+        $reader = $this->getReader();
+        $ref = new \ReflectionClass(ClassWithPhpCsSuppressAnnotation::class);
+
+        self::assertEmpty($reader->getMethodAnnotations($ref->getMethod('foo')));
+    }
+
+    public function testGloballyIgnoredAnnotationNotIgnored() : void
+    {
+        $reader = $this->getReader();
+        $class  = new \ReflectionClass(Fixtures\ClassDDC1660::class);
+        $testLoader = static function (string $className) : bool {
+            if ($className === 'since') {
+                throw new \InvalidArgumentException('Globally ignored annotation names should never be passed to an autoloader.');
+            }
+            return false;
+        };
+        spl_autoload_register($testLoader, true, true);
+        try {
+            self::assertEmpty($reader->getClassAnnotations($class));
+        } finally {
+            spl_autoload_unregister($testLoader);
+        }
+    }
+
+    public function testPHPCodeSnifferAnnotationsAreIgnored()
+    {
+        $reader = $this->getReader();
+        $ref = new \ReflectionClass(ClassWithPHPCodeSnifferAnnotation::class);
+
+        self::assertEmpty($reader->getClassAnnotations($ref));
+    }
+
+    public function testPHPStanGenericsAnnotationsAreIgnored()
+    {
+        $reader = $this->getReader();
+        $ref = new \ReflectionClass(ClassWithPHPStanGenericsAnnotations::class);
+
+        self::assertEmpty($reader->getClassAnnotations($ref));
+        self::assertEmpty($reader->getPropertyAnnotations($ref->getProperty('bar')));
+        self::assertEmpty($reader->getMethodAnnotations($ref->getMethod('foo')));
+
+        $this->expectException('\Doctrine\Common\Annotations\AnnotationException');
+        $this->expectExceptionMessage('[Semantical Error] The annotation "@Template" in method Doctrine\Tests\Common\Annotations\Fixtures\ClassWithPHPStanGenericsAnnotations::twigTemplateFunctionName() was never imported.');
+        self::assertEmpty($reader->getMethodAnnotations($ref->getMethod('twigTemplateFunctionName')));
+    }
+
+    public function testImportedIgnoredAnnotationIsStillIgnored()
+    {
+        $reader = $this->getReader();
+        $ref = new \ReflectionClass(ClassWithImportedIgnoredAnnotation::class);
+
+        self::assertEmpty($reader->getMethodAnnotations($ref->getMethod('something')));
     }
 }
