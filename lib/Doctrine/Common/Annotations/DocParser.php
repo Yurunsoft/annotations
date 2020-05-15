@@ -1218,4 +1218,24 @@ final class DocParser
 
         return false;
     }
+
+    /**
+     * Get the given doc block.
+     *
+     * @return array
+     */ 
+    public function getImports()
+    {
+        return $this->imports;
+    }
+
+    /**
+     * Get an array of default namespaces if operating in simple mode.
+     *
+     * @return string[]
+     */ 
+    public function getNamespaces()
+    {
+        return $this->namespaces;
+    }
 }
