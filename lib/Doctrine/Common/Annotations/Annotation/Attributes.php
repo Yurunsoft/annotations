@@ -31,7 +31,7 @@ namespace Yurun\Doctrine\Common\Annotations\Annotation;
 final class Attributes
 {
     /**
-     * @var array<Yurun\Doctrine\Common\Annotations\Annotation\Attribute>
+     * @var array<Attribute>
      */
     public $value;
 }

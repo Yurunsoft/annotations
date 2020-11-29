@@ -7,7 +7,6 @@ php:
   - 7.2
   - 7.3
   - 7.4
-  - nightly
 
 cache:
   directories:
@@ -16,9 +15,7 @@ cache:
 before_install:
   - mv ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini{,.disabled} || echo "xdebug not available"
 
-install:
-  - if [[ $TRAVIS_PHP_VERSION = nightly ]]; then export COMPOSER_FLAGS="--ignore-platform-reqs"; fi
-  - travis_retry composer update --prefer-dist $COMPOSER_FLAGS
+install: travis_retry composer update --prefer-dist
 
 script:
   - ./vendor/bin/phpunit
@@ -28,10 +25,17 @@ jobs:
     - php: nightly
 
   include:
+    - stage: Test
+      php: nightly
+      before_install:
+        - composer config platform.php 7.4.99
+        - composer config minimum-stability dev
+
     - stage: Lint
       before_script:
-        - travis_retry composer require --dev --prefer-dist --prefer-stable phpstan/phpstan:^0.7
+        - travis_retry composer require --dev --prefer-dist --prefer-stable phpstan/phpstan:^0.12.20
       script: vendor/bin/phpstan analyse -l 3 -c phpstan.neon lib tests
+      php: 7.4
 
     - stage: Benchmark
       install:
@@ -39,3 +43,4 @@ jobs:
         - curl -o phpbench.phar https://phpbench.github.io/phpbench/phpbench.phar
         - curl -o phpbench.phar.pubkey https://phpbench.github.io/phpbench/phpbench.phar.pubkey
       script: php phpbench.phar run
+      php: 7.4
